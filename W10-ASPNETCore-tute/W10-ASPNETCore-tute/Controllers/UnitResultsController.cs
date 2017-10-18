@@ -101,6 +101,10 @@ namespace W10_ASPNETCore_tute.Controllers
             {
                 try
                 {
+                    var total = double.Parse(unitResult.Assignment1Mark) +
+                double.Parse(unitResult.Assignment2Mark) +
+                double.Parse(unitResult.ExamMark);
+                    unitResult.TotalMark = total.ToString();
                     _context.Update(unitResult);
                     await _context.SaveChangesAsync();
                 }
@@ -116,6 +120,7 @@ namespace W10_ASPNETCore_tute.Controllers
                     }
                 }
                 return RedirectToAction("Index");
+
             }
             return View(unitResult);
         }
